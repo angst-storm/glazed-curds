@@ -19,8 +19,7 @@ def tables_data():
 
 
 def photo_detection():
-    cur.execute('SELECT * FROM views')
-    print(len(cur.fetchall()))
+    cur.execute('SELECT * FROM fvf')
     print(cur.fetchone())
 
 
