@@ -18,4 +18,4 @@ def cameras2json():
     cameras = []
     for camera in cur.fetchall():
         cameras.append({'name': camera[0], 'lat': float(camera[1]), 'lng': float(camera[2])})
-    json.dump(cameras, open("cameras.json", "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(cameras, open("data/cameras.json", "w", encoding="utf-8"), ensure_ascii=False)

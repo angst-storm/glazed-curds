@@ -4,7 +4,7 @@ import json
 
 districts = {}
 
-regions = json.load(open("moscow.json", "r", encoding="utf-8"))
+regions = json.load(open("data/moscow.json", "r", encoding="utf-8"))
 for region in regions:
     for district in region["childs"]:
         districts[district["name"]] = Polygon(
@@ -16,9 +16,9 @@ district_locates = []
 for district in districts:
     center = districts[district].centroid.coords
     district_locates.append({"name": district, "lat": center[0][0], "lng": center[0][1]})
-json.dump(district_locates, open("districts.json", "w", encoding="utf-8"), ensure_ascii=False)
+json.dump(district_locates, open("data/districts.json", "w", encoding="utf-8"), ensure_ascii=False)
 
-cameras = json.load(open("cameras.json", "r", encoding="utf-8"))
+cameras = json.load(open("data/cameras.json", "r", encoding="utf-8"))
 for camera in cameras:
     p = Point(camera["lat"], camera["lng"])
     for dist_name in districts:
