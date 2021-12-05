@@ -5,5 +5,12 @@ sidebar.onmouseover = function () {
 }
 
 sidebar.onmouseout = function () {
-    sidebar.style.right = "-130px";
+    sidebar.style.right = "-240px";
+}
+
+timeinput = document.getElementById("inputTime");
+submitButton = document.getElementById("submitButton");
+
+submitButton.onclick = function () {
+    alert(timeinput.value);
 }

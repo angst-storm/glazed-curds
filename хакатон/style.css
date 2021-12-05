@@ -66,11 +66,11 @@ section {
 
 .sidebar {
     height: 70px;
-    width: 150px;
+    width: 250px;
     position: fixed;
     top: 45%;
     bottom: 55%;
-    right: -130px;
+    right: -240px;
     z-index: 999;
     background-color: white;
     transition: 0.5s;
@@ -80,5 +80,5 @@ section {
 
 form {
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 20px;
 }

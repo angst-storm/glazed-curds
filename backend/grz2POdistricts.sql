@@ -44,3 +44,27 @@ select distinct fnac.camera, fvf.lat, fvf.lon
 from fvf_not_active_cams fnac
          left outer join (select distinct camera, lat, lon from fvf) fvf
                          on fnac.camera = fvf.camera;
+
+create table autos_starts_dist as
+select starts.grz, starts.camera, ctd.district, starts.date
+from autos_starts starts
+         join camera_to_district ctd
+              on starts.camera = ctd.camera;
+
+create table autos_ends_dist as
+select ends.grz, ends.camera, ctd.district, ends.date
+from autos_ends ends
+         join camera_to_district ctd
+              on ends.camera = ctd.camera;
+
+create table autos_starts_and_ends_dist as
+select starts.grz      as grz,
+       starts.camera   as start_cam,
+       starts.district as start_dist,
+       starts.date     as start_time,
+       ends.camera     as end_cam,
+       ends.district   as end_dist,
+       ends.date       as end_time
+from autos_starts_dist starts
+         left outer join autos_ends_dist ends
+                         on starts.grz = ends.grz;
