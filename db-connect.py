@@ -1,4 +1,5 @@
 import psycopg2
+import json
 
 db = psycopg2.connect("""
     host=rc1c-90mkmxvku0h105em.mdb.yandexcloud.net 
@@ -12,30 +13,9 @@ db = psycopg2.connect("""
 cur = db.cursor()
 
 
-def tables_data():
-    cur.execute('SELECT * FROM INFORMATION_SCHEMA.TABLES')
-    for table in cur.fetchall():
-        print(table[2])
-
-
-def photo_detection():
-    cur.execute('SELECT * FROM fvf')
-    print(cur.fetchone())
-
-
-def radio_detection_coordinates():
-    cur.execute('SELECT * FROM det_coords')
-    print(len(cur.fetchall()))
-    print(cur.fetchone())
-
-
-def radio_detection_data():
-    cur.execute('SELECT * FROM detectors')
-    print(len(cur.fetchall()))
-    print(cur.fetchone())
-
-
-def sensors():
-    cur.execute('SELECT * FROM sensors')
-    print(len(cur.fetchall()))
-    print(cur.fetchone())
+def cameras2json():
+    cur.execute('SELECT * FROM not_active_cameras')
+    cameras = []
+    for camera in cur.fetchall():
+        cameras.append({'name': camera[0], 'lat': float(camera[1]), 'lng': float(camera[2])})
+    json.dump(cameras, open("cameras.json", "w", encoding="utf-8"), ensure_ascii=False)
