@@ -19,7 +19,6 @@ def get_correspondense_matrix(time_start, time_end):
         if i not in matrix:
             matrix[i] = 0
         matrix[i] += 1
-    file = open('correspondency_matrix.json', 'w', encoding='utf-8')
 
     # настраиваемое значение
     max_val = (time_end - time_start).total_seconds() / 60
@@ -30,7 +29,7 @@ def get_correspondense_matrix(time_start, time_end):
             value = abs(matrix[rel] / max_val if matrix[rel] / max_val <= 10 else 10)
             out_matrix.append({'dispatch': rel[0], 'arrival': rel[1], 'value': value})
 
-    json.dump(out_matrix, file, indent=4, ensure_ascii=False)
+    return json.dumps(out_matrix)
 
 
 

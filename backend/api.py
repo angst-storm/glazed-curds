@@ -12,8 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 @app.route('/')
 def index():
-    get_correspondense_matrix(datetime.datetime.fromtimestamp(int(request.args.to_dict()['date'])))
-    return jsonify(request.args.to_dict())
+    return jsonify(get_correspondense_matrix(datetime.datetime.fromtimestamp(int(request.args.to_dict()['date']))))
 
 
 if __name__ == "__main__":
