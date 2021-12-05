@@ -33,8 +33,6 @@ function initMap() {
         setDefaultMapLocation()
     }
 
-    addMarkers();
-
 
 }//Создаем карту
 
@@ -55,10 +53,9 @@ function readTextFile(file, callback) {
     }
     rawFile.send(null);
 }// Парсить json
-let rrr = [{ "dispatch":"район Замоскворечье",   "arrival":"Басманный район",  'value':7},
-    { "dispatch":"район Замоскворечье",   "arrival": "Пресненский район", 'value':8}]
 
-function addMarkers() {
+
+function addMarkers(rrr) {
     readTextFile("scripts/districts.json", function (text) {
         var data = JSON.parse(text);
         data.forEach(center => {
@@ -69,7 +66,7 @@ function addMarkers() {
             }))
         });
 
-        rrr.forEach(el => {
+            rrr.forEach(el => {
             let el1 = {};
             let el2= {};
             data.forEach(value => {
@@ -109,7 +106,8 @@ function addMarkers() {
 
         drawMarkerCluster();
     });
-} // Добавляем маркеры и Polylines
+
+}// Добавляем маркеры и Polylines
 
 function drawMarkerCluster() {
     let vaccinationCLuster = new MarkerClusterer(
