@@ -6,9 +6,6 @@ import json
 response = requests.get(r'https://www.openstreetmap.org/api/0.6/relation/102269')
 text = response.text
 
-#xml_file = open("moscow.xml", "w", encoding="utf-8")
-#xml_file.write(text)
-
 root = ET.fromstring(text)
 districts = []
 for child in root.iter('member'):
@@ -27,9 +24,6 @@ for okr in range(len(districts)):
         if child.get('type') == "relation":
             districts[okr]['childs'].append({'ref': child.get('ref'), 'name': '', 'points': []})
 
-
-# save = open("moscow.json", "w")
-# json.dump(districts, save, indent=4)
 
 for okr in range(len(districts)):
     for dist in range(len(districts[okr]['childs'])):

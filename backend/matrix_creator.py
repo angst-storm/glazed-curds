@@ -11,29 +11,35 @@ connection = psycopg2.connect(user="rouser",
 cursor = connection.cursor()
 
 def get_correspondense_matrix(time_start, time_end):
-    cursor.execute("SELECT start_cam, end_cam FROM autos_starts_and_ends WHERE start_time < (%s) AND end_time > (%s)", (time_start, time_end))
+    cursor.execute("SELECT start_dist, end_dist FROM autos_starts_and_ends_dist WHERE start_time < (%s) AND end_time > (%s)", (time_start, time_end))
     actual = cursor.fetchall()
     matrix = {}
     for i in actual:
         if i not in matrix:
             matrix[i] = 0
         matrix[i] += 1
-    file = open('correspondency_ matrix.csv', 'w')
+    file = open('correspondency_matrix.csv', 'w', encoding='utf-8')
+
 
     header = []
     header.append('startCameras')
     for i in matrix:
-        header.append(i[0])
+        if i[0] not in header:
+            header.append(i[0])
     w = csv.DictWriter(file, fieldnames=header)
 
     for i in matrix:
         row = {}
-        row['startCameras'] = i[1]
         for j in header:
-            row[j] = matrix[i]
+            if j == 'startCameras':
+                row[j] = i[0]
+                continue
+            cortage = (i[0], j)
+            if cortage in matrix:
+                row[j] = matrix[cortage]
         w.writerow(row)
 
-    print(actual)
+    #print(actual)
 
 
 
