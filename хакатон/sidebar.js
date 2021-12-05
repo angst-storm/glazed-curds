@@ -11,6 +11,8 @@ sidebar.onmouseout = function () {
 timeinput = document.getElementById("inputTime");
 submitButton = document.getElementById("submitButton");
 
-submitButton.onclick = function () {
-    alert(timeinput.value);
+submitButton.onclick = async function () {
+    let url = 'http://127.0.0.1:5000/?date=' + timeinput.value
+    let response = await fetch(url);
+    return await response.json()
 }
