@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
+  <head lang="ru">
     <title>Add Map</title>
+    <meta charset="UTF-8">
     <style type="text/css">
-      /* Set the size of the div element that contains the map */
       #map {
-        height: 800px;
-        /* The height is 400 pixels */
-        width: 800px;
-        /* The width is the width of the web page */
+        height: 100%;
+        width: 100%;
       }
     </style>
-    <script type="text/javascript"
-            src="http://maps.googleapis.com/maps/api/js?libraries=weather&sensor=false">
-    </script>
-    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
-    <script type="text/javascript" src="data/cameras.json"></script>
-    <script src="scripts/ClusterMarker+structure.js"></script>
+    <script src="ммм_Живи.js"></script>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <main>
+      <nav class="grid-cont">
+        <div class="pic button1">
+          <img src="img/2.png" alt="1pic">
+        </div>
+        <div class="pic button2">
+          <img src="img/3.png" alt="3pic">
+        </div>
+        <div class="pic button3">
+          <img src="img/1.png" alt="2pic">
+        </div>
+      </nav>
+
+      <section class="bio hidden">
+
+      </section>
+
+      <section class="googlemap">
+        <div id="map"></div>
+      </section>
+
+      <section class="corespMatrix hidden">
+
+      </section>
+      <aside class="sidebar">
+        <div class="sideContent">
+          <form>
+            <input type="time">
+          </form>
+        </div>
+      </aside>
+    </main>
+
+
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB29LBDi2DsGPrFp4UBmAKEct0a26C1y7U&callback=initialiseMap&libraries=&v=weekly&libraries=drawing"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB29LBDi2DsGPrFp4UBmAKEct0a26C1y7U&callback=initMap&libraries=&v=weekly&libraries=drawing"
       async
     ></script>
+    <script src="navigation.js"></script>
+    <script src="sidebar.js"></script>
   </body>
 </html>
