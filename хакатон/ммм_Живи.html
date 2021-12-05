@@ -9,7 +9,14 @@
         width: 100%;
       }
     </style>
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?libraries=weather&sensor=false">
+    </script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+    <script type="text/javascript" src="data/cameras.json"></script>
+    <script src="scripts/ClusterMarker+structure.js"></script>
     <script src="ммм_Живи.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <main>
@@ -25,11 +32,13 @@
         </div>
       </nav>
 
-      <section class="bio hidden">
-
+      <section class="bio">
+        <div class="logocont">
+          <img class="logo" src="img/logo.png" alt="logo">
+        </div>
       </section>
 
-      <section class="googlemap">
+      <section class="googlemap hidden">
         <div id="map"></div>
       </section>
 
@@ -46,8 +55,7 @@
     </main>
 
 
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB29LBDi2DsGPrFp4UBmAKEct0a26C1y7U&callback=initMap&libraries=&v=weekly&libraries=drawing"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB29LBDi2DsGPrFp4UBmAKEct0a26C1y7U&callback=initialiseMap&libraries=&v=weekly&libraries=drawing"
       async
     ></script>
     <script src="navigation.js"></script>

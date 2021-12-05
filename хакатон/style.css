@@ -44,7 +44,20 @@ section {
 }
 
 .bio {
-    background-color: aqua;
+    background-color: rgb(3, 6, 36);
+}
+
+.logo {
+    align-self: center;
+    justify-self: center;
+    width: 25%;
+    height: auto;
+}
+
+.logocont {
+    width: 100%;
+    height: 100%;
+    display: grid;
 }
 
 .corespMatrix {
