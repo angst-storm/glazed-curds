@@ -768,7 +768,10 @@ function initMap() {
 
     addMarkers();
 
-} //Создаем карту
+
+}//Создаем карту
+
+
 
 function setDefaultMapLocation() {
     this.map.setCenter(new google.maps.LatLng( 55.755819, 37.617644));
